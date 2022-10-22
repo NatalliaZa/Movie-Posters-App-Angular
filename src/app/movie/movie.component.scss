@@ -1,0 +1,27 @@
+.movie-container {
+  width: 350px;
+  height: auto;
+  border: 2px solid palevioletred;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  align-items: stretch;
+  column-gap: 10px;
+  
+  .movie-img {
+    width: 150px;
+    height: 220px;
+    overflow: hidden;
+    flex-shrink: 0;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .movie-info {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 30px 60px auto 40px;
+  }
+}

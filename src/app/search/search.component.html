@@ -1,0 +1,39 @@
+<div class="main-container">
+  <h2>Movie search:</h2>
+  <div class="wrapper">
+    <div class="input-container container">
+      <div>Title:</div>
+      <mat-form-field class="example-full-width" color="accent">
+        <mat-label></mat-label>
+        <input placeholder="The name of the movie"  matInput [(ngModel)]="inputValue" />
+      </mat-form-field>
+    </div>
+    <div class="select-container container">
+      <div>Type:</div>
+      <mat-form-field color="accent" class="select">
+        <mat-label></mat-label>
+        <mat-select [(ngModel)]="selectedValue" name="type">
+          <mat-option *ngFor="let type of types" [value]="type.value" color="accent">
+            {{ type.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="button-container">
+      <button mat-flat-button color="accent" (click)="getMovies(true)" [disabled]="!inputValue">Search</button>
+    </div>
+  </div>
+  <h2 *ngIf="movies.length">Films:</h2>
+  <div class="movies-container">
+    <app-movie [movie]="movie" *ngFor="let movie of movies"></app-movie>
+  </div>
+  <mat-paginator
+    *ngIf="movies?.length"
+    [length]="totalPages"
+    [pageSize]="10"
+    [pageIndex]="pageIndex"
+    (page)="handlePageEvent($event)"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>
